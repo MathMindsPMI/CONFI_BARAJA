@@ -1,289 +1,105 @@
-/* ===========================================================
-   CONFIELECTRO — BARJA DE ELEMENTOS
-   Paleta: Azul (#004AAD), Amarillo (#FFC300), Azul Claro (#00A6FB)
-   =========================================================== */
-
-/* RESET BÁSICO */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* ======== ESTILO GENERAL ======== */
 
 body {
-  font-family: "Segoe UI", Roboto, sans-serif;
-  background: #f5f7fb;
-  color: #1a1a1a;
-  line-height: 1.5;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
-/* HEADER */
-.header {
-  background: #004AAD;
-  padding: 1rem;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 6px solid #FFC300;
+/* LOGO */
+.logo-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
 }
 
-.header .brand {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.logo {
+    width: 160px;
+    height: auto;
 }
 
-.header .logo {
-  width: 80px;
-  height: auto;
-}
-
-.header h1 {
-  font-size: 1.6rem;
-  font-weight: 700;
-}
-
-.header .lead {
-  font-size: 0.9rem;
-  opacity: 0.85;
-}
-
-/* LAYOUT PRINCIPAL */
-.app {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 1.5rem;
-  padding: 1.5rem;
-}
-
-@media (max-width: 900px) {
-  .app {
-    grid-template-columns: 1fr;
-  }
+/* TÍTULO */
+.titulo {
+    margin-top: 10px;
+    color: #1E3A5F;
+    font-size: 28px;
 }
 
 /* CONTROLES */
-.controls {
-  background: #ffffff;
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  margin-bottom: 1rem;
+.botonera button {
+    margin: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #1E3A5F;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-.modes {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+.botonera button:hover {
+    background: #27486F;
 }
 
-.mode {
-  flex: 1;
-  padding: 0.6rem 0.4rem;
-  cursor: pointer;
-  background: #e6e9f5;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 0.9rem;
+.modo-container {
+    margin-bottom: 10px;
 }
 
-.mode.active {
-  background: #004AAD;
-  border-color: #FFC300;
-  color: white;
+.modo-container label {
+    margin: 10px;
+    font-size: 18px;
 }
 
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-
-.btn {
-  padding: 0.6rem 1rem;
-  background: #004AAD;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background: #003279;
-}
-
-.btn.primary {
-  background: #FFC300;
-  color: #000;
-}
-
-.btn.primary:hover {
-  background: #e3b000;
-}
-
-.no-repeat {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.9rem;
-}
-
-.counter {
-  font-weight: bold;
-  margin-top: 0.8rem;
-}
-
-/* CARTA */
-.stage {
-  perspective: 1200px;
-}
-
-.card-wrap {
-  display: flex;
-  justify-content: center;
-}
+/* ======== CARTA ======== */
 
 .card {
-  width: 330px;
-  height: 430px;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  cursor: pointer;
-  transform-style: preserve-3d;
-  transition: transform 0.9s;
-  user-select: none;
-}
-
-.card.flipped {
-  transform: rotateY(180deg);
+    width: 280px;
+    height: 380px;
+    margin: 20px auto;
+    perspective: 1000px;
 }
 
 .card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.9s;
+    transform-style: preserve-3d;
 }
 
-/* FRENTE */
-.card-front, .card-back {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  padding: 1rem;
-  border-radius: 20px;
+.card-inner.flip {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .card-front {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    background: white;
 }
 
-.top {
-  display: flex;
-  justify-content: space-between;
-}
-
-.atomic-number {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.family-badge {
-  background: #004AAD;
-  padding: 0.3rem 0.6rem;
-  color: white;
-  border-radius: 8px;
-  font-size: 0.8rem;
-}
-
-.symbol {
-  font-size: 4.2rem;
-  text-align: center;
-  font-weight: 700;
-}
-
-.name {
-  font-size: 1.2rem;
-  text-align: center;
-  margin-top: 0.4rem;
-}
-
-.meta {
-  font-size: 0.9rem;
-  opacity: 0.8;
-  text-align: center;
-}
-
-/* REVERSO */
 .card-back {
-  transform: rotateY(180deg);
-  background: #f2f6ff;
-  border: 3px solid #004AAD;
+    background: #E7EEF5;
+    transform: rotateY(180deg);
 }
 
-.back-header {
-  text-align: center;
-  margin-bottom: 1rem;
-}
+/* CONFIGURACIÓN ELECTRÓNICA COLOREADA */
+.sub-s { color: #2D6A4F; font-weight: bold; }
+.sub-p { color: #1D4ED8; font-weight: bold; }
+.sub-d { color: #B45309; font-weight: bold; }
+.sub-f { color: #7C3AED; font-weight: bold; }
 
 .config {
-  font-size: 0.95rem;
-  margin-bottom: 0.8rem;
-  line-height: 1.4;
+    font-size: 16px;
+    margin: 5px 0;
 }
-
-.config.short {
-  font-weight: bold;
-  color: #004AAD;
-}
-
-.note {
-  font-size: 0.75rem;
-  opacity: 0.8;
-}
-
-/* PANEL LATERAL */
-.panel {
-  background: white;
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.history {
-  max-height: 420px;
-  overflow-y: auto;
-  font-size: 0.9rem;
-  padding-right: 0.5rem;
-}
-
-.footer {
-  margin-top: 1rem;
-  font-size: 0.8rem;
-  opacity: 0.7;
-}
-
-/* ===============================
-   COLORES POR FAMILIA QUÍMICA
-   =============================== */
-
-.familia-alcalinos       { border-top: 12px solid #FF6B6B; }
-.familia-alcalinoterreos { border-top: 12px solid #FFA26B; }
-.familia-transicion      { border-top: 12px solid #6BCB77; }
-.familia-lantanidos      { border-top: 12px solid #4D96FF; }
-.familia-actinidos       { border-top: 12px solid #845EC2; }
-.familia-metaloides      { border-top: 12px solid #FFC75F; }
-.familia-noMetales       { border-top: 12px solid #F9F871; }
-.familia-halogenos       { border-top: 12px solid #FF85C2; }
-.familia-gasesNobles     { border-top: 12px solid #00C9A7; }
-.familia-otros           { border-top: 12px solid #B0B0B0; }
-
