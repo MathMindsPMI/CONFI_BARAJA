@@ -1,29 +1,94 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Configuraciones Electrónicas</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CONFIELECTRO — Baraja de Elementos (118)</title>
+  <meta name="description" content="Simulación interactiva: baraja aleatoria con los 118 elementos de la tabla periódica. Modos Básico/Experto, sin repetición, configuración electrónica completa y abreviada, exportar historial.">
+  <!-- Enlaza los archivos que recibirás a continuación -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Simulador de Configuraciones Electrónicas</h1>
-
-<button id="drawBtn">Sacar elemento</button>
-<button id="exportBtn">Exportar historial CSV</button>
-
-<div class="card" id="card">
-    <div class="inner">
-        <div class="front" id="front">
-            <h2 id="elementName">—</h2>
-        </div>
-        <div class="back" id="back">
-            <pre id="elementConfig">—</pre>
-            <pre id="elementConfigNoble">—</pre>
-        </div>
+  <header class="header">
+    <div class="brand">
+      <img src="assets/logo.png" alt="Logo CONFIELECTRO" class="logo">
+      <div>
+        <h1>CONFIELECTRO — Baraja de Elementos</h1>
+        <p class="lead">118 elementos · configuración completa y abreviada · sin repetición · export CSV · flip 3D · paleta del logo</p>
+      </div>
     </div>
-</div>
+  </header>
 
-<script src="script.js"></script>
+  <main class="app" role="main">
+    <!-- CONTROLES -->
+    <section class="controls" aria-label="Controles principales">
+      <div class="modes" role="tablist" aria-label="Modo de juego">
+        <button id="mode-basic" class="mode active" role="tab" aria-selected="true">Básico</button>
+        <button id="mode-expert" class="mode" role="tab" aria-selected="false">Experto</button>
+      </div>
+
+      <div class="actions" aria-hidden="false">
+        <button id="generateBtn" class="btn primary" title="G">Generar elemento (G)</button>
+        <button id="revealBtn" class="btn" title="R">Respuesta correcta (R)</button>
+
+        <label class="no-repeat" title="Sin repetición">
+          <input type="checkbox" id="noRepeat"> Sin repetición
+        </label>
+
+        <button id="resetDeck" class="btn">Reiniciar baraja</button>
+        <button id="exportCsv" class="btn">Exportar CSV</button>
+      </div>
+
+      <div class="counter" id="counter" aria-live="polite">Generados: 0 — Restantes: 118</div>
+    </section>
+
+    <!-- ESCENA / CARTA -->
+    <section class="stage" aria-label="Área de la carta">
+      <div class="card-wrap" aria-hidden="false">
+        <div id="card" class="card familia-default" aria-hidden="true" tabindex="0">
+          <div class="card-inner">
+            <!-- FRENTE -->
+            <div class="card-front">
+              <div class="top">
+                <div id="atomicNumber" class="atomic-number"># --</div>
+                <div id="familyBadge" class="family-badge">Familia</div>
+              </div>
+
+              <div class="center">
+                <div id="symbol" class="symbol">?</div>
+                <div id="name" class="name">Presiona "Generar elemento"</div>
+                <div id="metaInfo" class="meta">Seleccione modo y genere una carta</div>
+              </div>
+            </div>
+
+            <!-- REVERSO -->
+            <div class="card-back">
+              <div class="back-header">
+                <strong id="backTitle">Configuración electrónica</strong>
+              </div>
+
+              <div id="configFull" class="config full" aria-live="polite"></div>
+              <div id="configShort" class="config short" aria-live="polite"></div>
+              <div class="note small">Se muestra versión completa por subniveles y abreviada (gas noble). Excepciones comunes aplicadas.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL LATERAL / HISTORIAL -->
+    <aside class="panel" aria-label="Panel lateral">
+      <h3>Historial (últimos 20)</h3>
+      <div id="history" class="history" aria-live="polite"></div>
+
+      <footer class="footer">
+        <div class="muted">Simulación educativa — tabla periódica completa (1–118)</div>
+        <div class="small muted">Teclas rápidas: <strong>G</strong> generar · <strong>R</strong> mostrar</div>
+      </footer>
+    </aside>
+  </main>
+
+  <!-- Script principal (recibirás el contenido en el siguiente mensaje) -->
+  <script src="script.js"></script>
 </body>
 </html>
