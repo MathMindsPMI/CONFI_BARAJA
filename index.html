@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulación de Elementos – Baraja Interactiva</title>
+    <title>Generador de Tarjetas – CONFIELECTRODIDACTICO</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,31 +14,18 @@
         <img src="logo.png" alt="Logo" class="logo">
     </div>
 
-    <h1 class="titulo">SIMULADOR DE ELEMENTOS DE LA TABLA PERIÓDICA</h1>
-
-    <!-- Selector de Modo -->
-    <div class="modo-container">
-        <label><input type="radio" name="modo" value="basico" checked> Modo Básico</label>
-        <label><input type="radio" name="modo" value="experto"> Modo Experto</label>
-        <label><input type="radio" name="modo" value="unico"> Sin Repetición</label>
-    </div>
+    <h1 class="titulo">GENERADOR DE TARJETAS INTERACTIVAS</h1>
 
     <!-- Botones -->
     <div class="botonera">
-        <button id="generar">Generar elemento</button>
-        <button id="mostrarConfig">Respuesta correcta</button>
-        <button id="exportarCSV">Exportar historial CSV</button>
+        <button id="btnGenerar">Generar Tarjetas</button>
+        <button id="btnLimpiar">Limpiar Todo</button>
     </div>
 
-    <!-- Carta -->
-    <div class="card">
-        <div class="card-inner">
-            <div class="card-front"></div>
-            <div class="card-back"></div>
-        </div>
-    </div>
+    <!-- Contenedor donde aparecerán las tarjetas -->
+    <div id="cardContainer" class="card-container"></div>
 
+    <!-- Script -->
     <script src="script.js"></script>
 </body>
-
 </html>
