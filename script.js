@@ -181,3 +181,48 @@ elementos.push(
     { num: 117, simbolo: "Ts", nombre: "Tenesino", config: "[Rn] 5f14 6d10 7s2 7p5", familia: "Halógenos" },
     { num: 118, simbolo: "Og", nombre: "Oganesón", config: "[Rn] 5f14 6d10 7s2 7p6", familia: "Gases Nobles" }
 );
+
+// ================================
+// PARTE 5 — GENERAR TARJETAS
+// ================================
+
+// Función que crea cada tarjeta en el DOM
+function generarTarjetas() {
+    const contenedor = document.getElementById("cardContainer");
+    contenedor.innerHTML = ""; // Limpia tarjetas previas
+
+    elementosCombinados.forEach((elemento, index) => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+
+        card.innerHTML = `
+            <div class="card-header">
+                <img src="logo.png" class="card-logo" alt="logo">
+                <h3>Elemento ${index + 1}</h3>
+            </div>
+
+            <div class="card-body">
+                <p><strong>Tipo:</strong> ${elemento.tipo}</p>
+                <p><strong>Valor:</strong> ${elemento.valor}</p>
+            </div>
+
+            <button class="deleteBtn">Eliminar</button>
+        `;
+
+        // Evento para eliminar tarjeta
+        card.querySelector(".deleteBtn").addEventListener("click", () => {
+            elementosCombinados.splice(index, 1);
+            guardarEnLocalStorage();
+            generarTarjetas();
+        });
+
+        contenedor.appendChild(card);
+    });
+}
+
+// Llamar después de combinar listas
+document.getElementById("btnGenerar").addEventListener("click", () => {
+    combinarListas();
+    generarTarjetas();
+});
+
